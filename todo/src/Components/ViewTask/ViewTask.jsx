@@ -2,28 +2,28 @@ import React, { useEffect, useState } from 'react';
 import "./View.css";
 
 export default function ViewTask() {
-  const [todolist, settodolist] = useState([]);
+  const [todoList, setTodoList] = useState([]);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('tasks')) || [];
-    settodolist(saved);
+    setTodoList(saved);
   }, []);
 
-  const Togglecomplete = (id) => {
-    const updated = todolist.map((item) =>
+  const toggleComplete = (id) => {
+    const updated = todoList.map((item) =>
       item.id === id
         ? { ...item, completed: !item.completed }
         : item
     );
 
-    settodolist(updated);
+    setTodoList(updated);
     localStorage.setItem('tasks', JSON.stringify(updated)); 
   };
 
-  const deletetodo = (id) => {
-    const updated = todolist.filter((item) => item.id !== id);
+  const deleteTodo = (id) => {
+    const updated = todoList.filter((item) => item.id !== id);
 
-    settodolist(updated);
+    setTodoList(updated);
     localStorage.setItem('tasks', JSON.stringify(updated)); 
   };
 
@@ -33,14 +33,14 @@ export default function ViewTask() {
 
       <div className='but'>
         <ul>
-          {todolist.map((item) => (
+          {todoList.map((item) => (
             <li
               key={item.id}
-              onClick={() => Togglecomplete(item.id)}
+              onClick={() => toggleComplete(item.id)}
               style={{
                 cursor: 'pointer',
                 textDecoration: item.completed ? 'line-through' : 'none',
-                color: item.completed ? 'gray' : 'black'
+                color: item.completed ? '#aaa' : '#333'
               }}
             >
               <span>{item.text}</span>
@@ -49,7 +49,7 @@ export default function ViewTask() {
                 className='delet'
                 onClick={(e) => {
                   e.stopPropagation();
-                  deletetodo(item.id); 
+                  deleteTodo(item.id); 
                 }}
               >
                 delete

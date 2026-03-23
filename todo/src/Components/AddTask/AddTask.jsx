@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddTask.css';
 
 export default function AddTask() {
   const [todo, settodo] = useState('');
@@ -28,6 +29,7 @@ export default function AddTask() {
       <input
         value={todo}
         onChange={(e) => settodo(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && task()}
       />
       <button onClick={task}>ADD</button>
       

@@ -1,55 +1,57 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: white;
-}
-
 h2 {
   text-align: center;
-  margin-top: 20px;
-  color: #323131;
+  margin-top: 40px;
+  color: #2c3e50;
+  font-weight: 700;
 }
 
 .but {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
-ul {
+.but ul {
   list-style: none;
   padding: 0;
-  width: 400px;
+  width: 100%;
+  max-width: 500px;
 }
 
-li {
-  background: #fff;
-  margin-bottom: 10px;
-  padding: 12px 15px;
-  border-radius: 8px;
+.but li {
+  background: white;
+  border: 1px solid #eaeaea;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.3s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
 }
 
-li:hover {
-  transform: scale(1.02);
+.but li:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
-span {
+.but span {
   flex: 1;
+  font-size: 16px;
 }
 
 .delet {
-  background-color: #ff4d4d;
-  border: none;
-  padding: 6px 10px;
+  background-color: #e74c3c;
   color: white;
-  border-radius: 5px;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .delet:hover {
-  background-color: #cc0000;
+  background-color: #c0392b;
 }
