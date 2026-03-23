@@ -1,0 +1,34 @@
+.welcom {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("./assets/Huge-Backgrounds-63.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcom h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: red;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.welcom p {
+  max-width: 700px;
+  font-size: 1.1rem;
+  color: gray;
+  background:black;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .welcom h1 {
+    font-size: 2.2rem;
+  }
+  .welcom p {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,50 @@
+
+nav{
+  background-color: rgba(7, 1, 1, 0.165);
+  height: 70px;
+  box-shadow: black;
+  display: flex;                
+  justify-content: flex-end;    
+  align-items: center;
+            
+}
+nav ul{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+nav li{
+  height: 50px;
+}
+nav :link {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+/* nav a{
+  color: white;
+} */
+
+nav a:hover {
+  background-color: rgb(37, 125, 212);
+  color: white;
+}
+.welcom{
+  align-content: center;
+}
+/* .add{
+  font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+} */
