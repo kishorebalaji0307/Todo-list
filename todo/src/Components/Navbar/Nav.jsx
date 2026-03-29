@@ -1,15 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "./Nav.css"
 
 export default function Nav() {
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar">
       <ul className="nav-links">
-        <li><Link to="/">HOME</Link></li>
-        <li><Link to="/TASKPAGE">TASK PAGE</Link></li>
-        <li><Link to="/ADDTASK">ADD TASK</Link></li>
-        <li><Link to="/ABOUT">ABOUT</Link></li> 
+        <li onClick={() => navigate("/")} className="nav-item">HOME</li>
+        <li onClick={() => navigate("/TASKPAGE")} className="nav-item">TASK PAGE</li>
+        <li onClick={() => navigate("/ADDTASK")} className="nav-item">ADD TASK</li>
+        <li onClick={() => navigate("/ABOUT")} className="nav-item">ABOUT</li> 
       </ul>
     </nav>
   )

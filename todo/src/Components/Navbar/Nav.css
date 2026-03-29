@@ -23,7 +23,7 @@
   white-space: nowrap; 
 }
 
-.nav-links a {
+.nav-item {
   text-decoration: none;
   color: #555;
   font-size: 16px;
@@ -32,13 +32,14 @@
   transition: color 0.2s ease;
   position: relative;
   outline: none;
+  cursor: pointer;
 }
 
-.nav-links a:hover {
+.nav-item:hover {
   color: #3498db;
 }
 
-.nav-links a::after {
+.nav-item::after {
   content: '';
   position: absolute;
   width: 0;
@@ -49,6 +50,6 @@
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-item:hover::after {
   width: 100%;
 }
