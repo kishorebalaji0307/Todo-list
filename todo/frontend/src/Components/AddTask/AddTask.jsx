@@ -47,7 +47,7 @@ export default function AddTask() {
         onChange={(e) => settodo(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && task()}
       />
-      <button onClick={task}>ADD</button>
+      <button onClick={task}>Add</button>
       
     </div>
   );
