@@ -3,6 +3,8 @@ import "./View.css";
 
 export default function ViewTask() {
   const [todoList, setTodoList] = useState([]);
+  const [show, setShow] = useState(false);
+const [editText, setEditText] = useState('');
 
   const fetchTasks = async () => {
     try {
@@ -63,38 +65,126 @@ export default function ViewTask() {
       console.error('Error deleting task:', err);
     }
   };
+  const save =(id)=>{
+  if (!editText.trim()) return;
+  const updated = todoList.map((item) =>
+      item.id === id ? { ...item, text: editText } : item);
+
+  setTodoList(updated);
+  localStorage.setItem('tasks',JSON.stringify(updated));
+  setShow(null);
+  setEditText('');
+}
+
+const cancle= ()=>{
+  setShow(null);
+  setEditText('');
+}
+  
 
   return (
-    <div>
+     <div>
       <h2>TASKPAGE</h2>
-
-      <div className='but'>
-        <ul>
-          {todoList.map((item) => (
-            <li
-              key={item._id}
-              onClick={() => toggleComplete(item._id)}
+      <table className='tasktable'>
+        <thead>
+          <tr>
+            <th>S.NO</th>
+            <th>TASK</th>
+            <th>DESCRIPTION</th>
+            <th>DUE DATE</th>
+            <th>DELETE</th>
+            <th>UPDATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todoList.map((item,index) => (
+          <tr key={item.id}>
+            <td>{index +1}</td>
+            <td
+              onClick={() => toggleComplete(item.id)}
               style={{
                 cursor: 'pointer',
                 textDecoration: item.completed ? 'line-through' : 'none',
                 color: item.completed ? '#aaa' : '#333'
-              }}
-            >
-              <span>{item.text}</span>
-
-              <button
-                className='delet'
-                onClick={(e) => {
-                  e.stopPropagation();
-                  deleteTodo(item._id); 
+              }}>
+               {item.text}
+            </td>
+            <td> {item.description || 'no description'}</td>
+            <td>{item.duedate || 'no duedate'}</td>
+            <td>
+                <button
+                 className='delet'
+                 onClick={(e) => {
+                   e.stopPropagation();
+                   deleteTodo(item._id); 
                 }}
-              >
-                delete
-              </button>
-            </li>
+                  >  Delete </button>
+            </td>
+            <td>
+              <button className="delet" onClick={() => edit(item)}> Update</button>
+                {show === item.id && (
+                <div style={{ marginTop:'6px', display:'flex',gap:'6px'}}>
+                  <input type='text' value={editText} onChange={(e)=> setShow(e.target.value)}
+                  />
+                  <button onClick={()=> save(item.id)}>Save</button>
+                  <button onClick={cancle}>Cancel</button>
+
+                </div>
+                )}
+            </td>
+                
+          </tr>
           ))}
-        </ul>
-      </div>
-    </div>
+        </tbody>
+      </table>
+ </div>
   );
 }
+
+
+
+
+
+
+
+
+   
+//     <div>
+//       <h2>TASKPAGE</h2>
+
+//       <div className='but'>
+//         <ul>
+//           {todoList.map((item) => (
+//             <li
+//               key={item._id}
+//               onClick={() => toggleComplete(item._id)}
+//               style={{
+//                 cursor: 'pointer',
+//                 textDecoration: item.completed ? 'line-through' : 'none',
+//                 color: item.completed ? '#aaa' : '#333'
+//               }}
+//             >
+//               <span>{item.text}</span>
+
+//               <button
+//                 className='delet'
+//                 onClick={(e) => {
+//                   e.stopPropagation();
+//                   deleteTodo(item._id); 
+//                 }}
+//               >
+//                 delete
+//               </button>
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// // }
+  // <button
+  //                className='delet'
+  //                onClick={(e) => {
+  //                  e.stopPropagation();
+  //                  deleteTodo(item._id); 
+  //               }}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+ import { ToastContainer, toast } from 'react-toastify';
 import './AddTask.css';
 
 export default function AddTask() {
@@ -7,7 +8,10 @@ export default function AddTask() {
   const navigate = useNavigate();
 
   const task = async () => {
-    if (todo.trim() === '') return;
+    if (todo.trim() === '') {
+      toast("Please enter a task");
+      return;
+    }
 
     /* 
     const saved = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -35,11 +39,13 @@ export default function AddTask() {
       }
     } catch (err) {
       console.error('Error adding task:', err);
+     toast.error("Server connection failed.");
     }
   };
 
   return (
     <div className='add'>
+    <ToastContainer position="top-right" autoClose={3000} />
       <h1>Add Task</h1>
      
       <input
@@ -47,6 +53,14 @@ export default function AddTask() {
         onChange={(e) => settodo(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && task()}
       />
+      {/* <input type="text"   
+      value={description}
+      onChange={(e) => setdescription(e.target.value)}
+       placeholder="Description"></input>
+
+      <input type="date"  
+      value={date}
+      onChange={(e) => setdate(e.target.value)}></input>  */}
       <button onClick={task}>Add</button>
       
     </div>
